@@ -1,0 +1,42 @@
+program: experiment_galaxy_sweep.py
+method: random
+project: two_sample_testing
+metric:
+  name: power_test
+  goal: maximize
+parameters:
+  experiment-name:
+    value: 'rjsd_galaxy_sweep'
+  permTestSize:
+    value: 100
+  significance:
+    value: 0.05
+  DATAFOLDER:
+    value: '/mnt/gpfs2_4m/scratch/jho432/mixture_results'
+  repetitions:
+    value: 50
+  deep:
+    value: True
+  is_image:
+    value: True
+  epsilon:
+    value: 0.6
+  epochs:
+    values: [10,20,50,100]
+  lr:
+    min: 0.00005
+    max: 0.0002
+  sigma:
+    value: 12288
+  sigma0:
+    value: 17.3205080757
+  batch_size:
+    values: [100,175,250]
+
+  
+
+command:  #   - ${env}
+  - python3
+  - -u
+  - ${program}
+  - ${args}   # args_no_hyphens
